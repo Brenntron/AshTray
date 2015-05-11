@@ -31,7 +31,8 @@ Usage Example:
 
   > ./ash_tray new
   1. Add a cigar.
-  2. Describe the composition of the cigar.
+  2. Enter length, ring gauge, name, maker, type, location of origin,
+     composition.
   3. Exit
 
 Accaptence Criteria:

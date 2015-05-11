@@ -11,7 +11,7 @@ elsif ARGV.length == 1
       menu.prompt = ""
 
       menu.choice('Add a cigar') { say("") }
-      menu.choice('Describe the composition of the cigar') { say("") }
+      menu.choice('Enter length, ring gauge, name, maker, type, location of origin, composition') { say("No cigars found. Ass a cigar.") }
       menu.choice('Exit') { say("Peace Out!\n") }
     end
   end

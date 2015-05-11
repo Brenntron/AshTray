@@ -45,8 +45,8 @@ class AddingANewScenarioTest < Minitest::Test
     expected_output = ""
     IO.popen('./ash_tray new', 'r+') do |pipe|
       expected_output = <<EOS
-1. Add a cigar.
-2. Describe the composition of the cigar.
+1. Add a cigar
+2. Enter length, ring gauge, name, maker, type, location of origin, composition
 3. Exit
 EOS
       pipe.puts "3"
