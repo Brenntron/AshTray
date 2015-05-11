@@ -29,10 +29,10 @@ ashamed of all the money you have spent on them. Regret nothing.
 
 Usage Example:
 
-  > ./AshTray
+  > ./ash_tray new
   1. Add a cigar.
   2. Describe the composition of the cigar.
-  3. List the cigars, thier makeup, and reviews.
+  3. Exit
 
 Accaptence Criteria:
 

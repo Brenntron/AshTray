@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+require 'highline/import'
+
+if ARGV.length < 1
+  print "[Help] Run as: ./ash_tray new"
+elsif ARGV.length == 1
+  if ARGV[0] != "new"
+    print "[Help] Run as: ./ash_tray new"
+  else
+    choose do |menu|
+      menu.prompt = ""
+
+      menu.choice('Add a cigar') { say("") }
+      menu.choice('Describe the composition of the cigar') { say("") }
+      menu.choice('Exit') { say("Peace Out!\n") }
+    end
+  end
+end
