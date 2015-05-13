@@ -1,18 +1,19 @@
 #!/usr/bin/env ruby
 require 'highline/import'
 
-if ARGV.length < 1
-  print "[Help] Run as: ./ash_tray new"
-elsif ARGV.length == 1
-  if ARGV[0] != "new"
-    print "[Help] Run as: ./ash_tray new"
-  else
-    choose do |menu|
-      menu.prompt = ""
+def print_error_message
+  puts "[Help] Run as: ./ash_tray new\n"
+end
 
-      menu.choice('Add a cigar') { say("") }
-      menu.choice('Enter length, ring gauge, name, maker, type, location of origin, composition') { say("No cigars found. Ass a cigar.") }
-      menu.choice('Exit') { say("Peace Out!\n") }
-    end
+if ARGV.size == 1 and ARGV[0] == "manage"
+  choose do |menu|
+    menu.prompt = ""
+
+    cigars_controller = CigarsController.new
+    menu.choice('Add a cigar') { say("") }
+    menu.choice('List all scenarios') { cigars_controller.index }
+    menu.chioce('Exit') { say("Peace Out!\n") }
   end
+else
+  puts "[Help] Run as: ./ash_tray manage"
 end
