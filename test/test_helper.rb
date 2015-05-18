@@ -21,5 +21,5 @@ def create_cigar(name)
 end
 
 def main_menu
-  "1. Add a cigar\n2. List all scenarios\n3. Exit\n"
+  "1. Add a cigar\n2. List all cigarss\n3. Exit\n"
 end

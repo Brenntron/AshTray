@@ -22,23 +22,23 @@ Usage Example:
   4. List all cigars
   5. Exit
   > 1
-  Enter name
+  > Enter name
   > Mille Fleurs
-  Enter length
+  > Enter length
   > 5"
-  Enter ring gauge
+  > Enter ring gauge
   > 42
-  Enter maker
+  > Enter maker
   > Romeo y Julieta
-  Select type
+  > Select type
   > Petit Coronas
-  Select wrapper country of origin
+  > Select wrapper country of origin
   > Cuba
-  Select filler country of origin
+  > Select filler country of origin
   > Cuba
-  Select binder country of origini
+  > Select binder country of origini
   > Cuba
-  Enter rating (1-5)
+  > Enter rating (1-5)
   > 4
   1. Add a cigar
   2. Edit a cigar
