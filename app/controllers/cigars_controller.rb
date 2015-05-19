@@ -6,7 +6,7 @@ class CigarsController
       cigars = Cigar.all
       cigars_string = ""
       cigars.each_with_index do |cigar, index|
-        cigars_string << "#{index + 1}. #{cigar.name} #{cigar.length} {cigar.model}\n"
+        cigars_string << "#{index + 1}. #{cigar.maker} #{cigar.name} #{cigar.length} {cigar.model}\n"
       end
       cigars_string
     else
@@ -14,22 +14,28 @@ class CigarsController
     end
   end
 
-  def add(name, length, ring_gauge)
+  def add(maker, name, length, ring_gauge)
     cigar            = Cigar.new
+    cigar.maker      = maker
     cigar.name       = name
     cigar.length     = length
     cigar.ring_gauge = ring_gauge
     if cigar.save_cigar
-      "#{name} #{length} #{ring_gauge} has been added\n"
+      "#{maker} #{name} #{length} #{ring_gauge} has been added\n"
     else
       "#{cigar.errors}"
     end
   end
 
   def new_cigar
+    maker      = ask("Who made the cigar?")
+    while maker.rstrip.empty?
+      puts "\"#{maker}\" is unacceptable!"
+      maker = ("Who made the cigar")
+    end
     name       = ask("What is the name of the cigar?")
     while name.rstrip.empty?
-      puts "\#{name}\" in unacceptable!"
+      puts "\"#{name}\" is unacceptable!"
       name = aks("What is the name of the cigar?")
     end
     length     = ask("What is the length of the cigar?")
@@ -43,7 +49,7 @@ class CigarsController
       puts "\"#{ring_gauge}\" is unacceptable!"
       ring_gauge = ask("What is the ring gauge?")
     end
-    response = self.add(name, length, ring_gauge)
+    response = self.add(maker, name, length, ring_gauge)
     say(response) unless response.nil?
   end
 
