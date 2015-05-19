@@ -16,13 +16,13 @@ describe CigarsController do
     let(:controller) {CigarsController.new}
 
     it "should add a cigar" do
-      controller.add("Mille Fleurs")
+      controller.add("Mille Fleurs", "5\"", "42")
       assert_equal 1, Cigar.count
     end
 
     it "should not add cigar all spaces" do
       cigar_name = "      "
-      assert_raises(ArgumentError) { controller.add(cigar_name) }
+      assert_raises(ArgumentError) { controller.add(cigar_name, "5\"", "42") }
     end
   end
 end

@@ -14,14 +14,21 @@ class CigarsController
     end
   end
 
-  def add(name, length, ring_gauge)
-    clean_name   = name.strip
-    clean_length = length.strip
+  def get_name(name)
+    @name = name.strip
+  end
 
-    cigar = Cigar.new(clean_name)
-    cigar.length(clean_length)
-    cigar.ring_gauge(ring_gauge)
-    if cigar.save
+  def get_length(length)
+    @length = length.strip
+  end
+
+  def get_ring_gauge(ring_gauge)
+    @ring_gauge = ring_gauge.to_i
+  end
+
+  def add
+    cigar = Cigar.new(@name, @length, @ring_gauge)
+    if cigar.save_cigar
       "\"#{name}\" has been added\n"
     else
       cigar.errors

@@ -4,22 +4,39 @@ require 'highline/import'
 Dir["./app/**/*.rb"].each { |f| require f }
 Dir["./lib/*.rb"].each { |f| require f }
 
-if ARGV.size == 1 and ARGV[0] == "manage"
+if ARGV.empty?
+  CigarEntries.new().list
+elsif ARGV.size == 1 and ARGV[0] == "manage"
   loop do
     choose do |menu|
       menu.prompt = ""
 
-      cigars_controller = CigarsController.new
+      entries_controller = CigarEntriesController.new
+      cigars_controller  = CigarsController.new
       menu.choice('Add a cigar') do
-        user_input = ask("What is the name of the cigar?")
-        response   = cigars_controller.add(user_input)
-        say("\#{user_input}\" has been added\n") unless response.nil?
+        rating            = ask("What would you rate the cigar?")
+        entries_controller.new(rating)
+
+        maker_name        = ask("Who made the cigar?")
+        makers_controller.new(maker_name)
+
+        cigar_name        = ask("What is the name of the cigar?")
+        cigars_controller.get_name(cigar_name)
+
+        cigar_length      = ask("What is the length of the cigar?")
+        cigars_controller.get_length(cigar_length)
+
+        cigar_ring_gauge  = ask("What is the ring gauge?")
+        cigars_controller.get_ring_gauge(cigar_ring_gauge)
+
+        cigars_controller.add
+        say("\"#{cigar_name}\" has been added\n") unless response.nil?
       end
-      menu.choice('List all cigars') do
+      menu.choice('Edit a cigar') do
         say(cigars_controller.index)
         exit
       end
-      menu.chioce('Exit') do
+      menu.choice('Exit') do
         say ("Peace Out!\n")
         exit
       end
