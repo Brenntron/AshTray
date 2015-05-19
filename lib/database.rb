@@ -7,7 +7,7 @@ class Database
     CREATE TABLE IF NOT EXISTS cigars (
       id integer PRIMARY KEY AUTOINCREMENT,
       name varchar(255) NOT NULL,
-      ring_guage integer NOT NULL,
+      ring_gauge integer NOT NULL,
       length varchar(255) NOT NULL,
       maker varchar(255) NOT NULL,
       rating_id integer NOT NULL,

@@ -40,7 +40,7 @@ class Cigar
   def save
     return false unless valid?
     if @id.nil?
-      Database.execute("INSERT INTO cigars (maker, name, length, ring_gauge) VALUES (?)", maker, name, length, ring_gauge)
+      Database.execute("INSERT INTO cigars (maker, name, length, ring_gauge) VALUES (?, ?, ?, ?)", maker, name, length, ring_gauge)
       @id = Database.execute("SELECT last_insert_rowid()")[0]['last_insert_rowid()']
       true
     else

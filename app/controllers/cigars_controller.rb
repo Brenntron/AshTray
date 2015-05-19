@@ -20,7 +20,7 @@ class CigarsController
     cigar.name       = name
     cigar.length     = length
     cigar.ring_gauge = ring_gauge
-    if cigar.save_cigar
+    if cigar.save
       "#{maker} #{name} #{length} #{ring_gauge} has been added\n"
     else
       "#{cigar.errors}"
@@ -45,15 +45,11 @@ class CigarsController
     end
     ring_gauge = ask("What is the ring gauge?")
     ring_gauge = ring_gauge.to_i
-    while ring_gauge.zero? or ring_gauge.empty? or ring_gauge.nil?
+    while ring_gauge.zero? or ring_gauge.nil?
       puts "\"#{ring_gauge}\" is unacceptable!"
       ring_gauge = ask("What is the ring gauge?")
     end
     response = self.add(maker, name, length, ring_gauge)
     say(response) unless response.nil?
-  end
-
-  def edit
-    #future stuff
   end
 end
