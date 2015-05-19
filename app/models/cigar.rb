@@ -20,22 +20,6 @@ class Cigar
 
   def valid?
     if @maker.rstrip.empty?
-      @errors = "\"#{maker}\" is not a valid name."
-    elsif @name.rstrip.empty?
-      @errors = "\"#{name}\" is not a valid name."
-      false
-    elsif @length.rstrip.empty?
-      @errors = "\"#{length}\" is not a valid length."
-    elsif !ring_gauge.class == Fixnum or @ting_gauge.to_i.zero?
-      @errors = "\"#{ring_gauge}\" is not a valid ring gauge"
-    else
-      @errors = nil
-      true
-    end
-  end
-
-  def valid?
-    if @maker.rstrip.empty?
       @errors = "\"#{maker}\" is unacceptable!"
       false
     elsif @name.rstrip.empty?
