@@ -17,9 +17,9 @@ Usage Example:
 
   > ./ash_tray manage
   1. Add a cigar
-  2. Edit a cigar
-  3. Delete a cigar
-  4. List all cigars
+  2. List cigars
+  3. Edit a cigar
+  4. Delete a cigar
   5. Exit
   > 1
   > Enter name
@@ -41,9 +41,9 @@ Usage Example:
   > Enter rating (1-5)
   > 4
   1. Add a cigar
-  2. Edit a cigar
-  3. Delete a cigar
-  4. List all cigars
+  2. List cigars
+  3. Edit a cigar
+  4. Delete a cigar
   5. Exit
 
 Accaptence Criteria:
@@ -60,9 +60,9 @@ Usage Example:
 
   > ./ash_tray manage
   1. Add a cigar
-  2. Edit a cigar
-  3. Delete a cigar
-  4. List all cigars
+  2. List cigars
+  3. Edit a cigar
+  4. Delete a cigar
   5. Exit
   > 2
   1. Name: Mille Fleurs
@@ -78,9 +78,9 @@ Usage Example:
   Enter rating
   > 3
   1. Add a cigar
-  2. Edit a cigar
-  3. Delete a cigar
-  4. List all cigars
+  2. List cigars
+  3. Edit a cigar
+  4. Delete a cigar
   5. Exit
 
  Accaptence Criteria:
@@ -96,17 +96,17 @@ Usage Example:
 
   > ./ash_tray manage
   1. Add a cigar
-  2. Edit a cigar
-  3. Delete a cigar
-  4. List all cigars
+  2. List cigars
+  3. Edit a cigar
+  4. Delete a cigar
   5. Exit
   > 3
   1. Mille Fleurs
   > 1
   1. Add a cigar
-  2. Edit a cigar
-  3. Delete a cigar
-  4. List all cigars
+  2. List cigars
+  3. Edit a cigar
+  4. Delete a cigar
   5. Exit
 
 Accapt
@@ -120,18 +120,18 @@ Usage Example:
 
   > ./ash_tray manage
   1. Add a cigar
-  2. Edit a cigar
-  3. Delete a cigar
-  4. List all cigars
+  2. List cigars
+  3. Edit a cigar
+  4. Delete a cigar
   5. Exit
   > 4
   1. Romeo y Julieta, Mille Fleurs, Wrapper: Cuba, Binder: Cuba,
      Filler: Cuba, Length: 5", Ring Gauge: 42, Shape: Petit Coronas,
      Rating: 3
   1. Add a cigar
-  2. Edit a cigar
-  3. Delete a cigar
-  4. List all cigars
+  2. List cigars
+  3. Edit a cigar
+  4. Delete a cigar
   5. Exit
 
 

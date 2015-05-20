@@ -8,7 +8,7 @@ loop do
   choose do |menu|
     menu.prompt = ""
     menu.choice('Add a cigar') { CigarsController.new.new_cigar }
-    menu.choice("List cigars") { CigarsController.new.index }
+    menu.choice("List cigars") { say(CigarsController.new.index) }
     menu.choice("Edit a cigar") { CigarEntriesController.new.update_rating }
     menu.choice("Delete a cigar") { CigarsController.new.delete_cigar }
     menu.choice("Exit") { exit }
