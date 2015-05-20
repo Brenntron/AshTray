@@ -4,27 +4,12 @@ require 'highline/import'
 Dir["./app/**/*.rb"].each { |f| require f }
 Dir["./lib/*.rb"].each { |f| require f }
 
-if ARGV.size == 1 and ARGV[0] == "manage"
-  loop do
-    choose do |menu|
-      menu.prompt = ""
-
-      cigars_controller = CigarsController.new
-      menu.choice('Add a cigar') do
-        user_input = ask("What is the name of the cigar?")
-        response   = cigars_controller.add(user_input)
-        say("\#{user_input}\" has been added\n") unless response.nil?
-      end
-      menu.choice('List all cigars') do
-        say(cigars_controller.index)
-        exit
-      end
-      menu.chioce('Exit') do
-        say ("Peace Out!\n")
-        exit
-      end
-    end
-  end
+if ARGV.length == 1 and ARGV[0] == "new"
+  CigarsController.new.new_cigar
+elsif ARGV.length == 1 and ARGV[0] == "edit"
+  #future stuff
+elsif ARGV.length == 1 and ARGV[0] == "edit"
+  #future stuff
 else
-  puts "[Help] Run as: ./ash_tray manage"
+  puts "[Help] Run as: ./ash_tray (new, edit or list)"
 end

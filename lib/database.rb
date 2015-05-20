@@ -7,37 +7,19 @@ class Database
     CREATE TABLE IF NOT EXISTS cigars (
       id integer PRIMARY KEY AUTOINCREMENT,
       name varchar(255) NOT NULL,
-      maker_id integer NOT NULL,
       ring_guage integer NOT NULL,
       length varchar(255) NOT NULL,
-      country_id integer NOT NULL,
-      shape_id integer NOT NULL,
-      maker_id integer NOT NULL
+      maker varchar(255) NOT NULL,
+      rating_id integer NOT NULL,
+      FOREIGN KEY(rating_id) REFERENCES cigar_entries(id)
     );
     SQL
     Database.execute <<-SQL
     CREATE TABLE IF NOT EXISTS cigar_entries (
       id integer PRIMARY KEY AUTOINCREMENT,
       rating integer NOT NULL,
-      cigar_id integer NOT NULL
-    );
-    SQL
-    Database.execute <<-SQL
-    CREATE TABLE IF NOT EXISTS makers (
-      id integer PRIMARY KEY AUTOINCREMENT,
-      name varchar(255) NOT NULL
-    );
-    SQL
-    Database.execute <<-SQL
-    CREATE TABLE IF NOT EXISTS countries (
-      id integer PRIMARY KEY AUTOINCREMENT,
-      name varchar(255) NOT NULL
-    );
-    SQL
-    Database.execute <<-SQL
-    CREATE TABLE IF NOT EXISTS shapes (
-      id integer PRIMARY KEY AUTOINCREMENT,
-      name varchar(255) NOT NULL
+      cigar_id integer NOT NULL,
+      FOREIGN KEY(cigar_id) REFERENCES cigars(id)
     );
     SQL
   end
