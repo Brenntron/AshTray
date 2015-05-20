@@ -3,7 +3,7 @@ require "highline/import"
 class CigarsController
   def index
     if Cigar.count > 0
-      cigars = Cigar.all
+      cigars        = Cigar.all
       cigars_string = ""
       cigars.each_with_index do |cigar, index|
         cigars_string << "#{index + 1}. #{cigar.maker} #{cigar.name} #{cigar.length}\n"
@@ -12,6 +12,16 @@ class CigarsController
     else
       "No cigars found. Add a cigar.\n"
     end
+  end
+
+  def return_info
+    info_string = ""
+    Database.execute("SELECT maker, name, length, ring_gauge, rating FROM cigars INNER JOIN cigar_entries WHERE cigars.rating_id == cigar_entries.id").map do |row|
+      index  = 0
+      index += 1
+      info_string << "#{index} #{row['maker']} #{row['name']} #{row['length']} #{row['ring_gauge']} #{row['rating']}"
+    end
+    info_string
   end
 
   def add(maker, name, length, ring_gauge)
