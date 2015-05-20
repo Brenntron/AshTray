@@ -3,13 +3,13 @@ class Cigar
   attr_accessor :maker, :name, :length, :ring_gauge
 
   def self.all
-    Database.execute("select * from cigars").map do |row|
-      cigar = Cigar.new
+    Database.execute("SELECT * FROM cigars").map do |row|
+      cigar            = Cigar.new
       cigar.maker      = row['maker']
       cigar.name       = row['name']
       cigar.length     = row['length']
       cigar.ring_gauge = row['ring_gauge']
-      cigar.instance_vairable_set(:@id, row['id'])
+      cigar.instance_variable_set(:@id, row['id'])
       cigar
     end
   end

@@ -2,9 +2,9 @@ require 'highline/import'
 
 class CigarEntriesController
 
-  def index(cigar_id)
+  def index
     if CigarEntry.count > 0
-      cigar_entry = CigarEntry.all(cigar_id)
+      cigar_entry = CigarEntry.all
       cigar_string = ""
       cigar_entry.each_with_index do |entry, index|
         cigars_string << "{index + 1}. #{entry.rating}\n"
@@ -27,13 +27,13 @@ class CigarEntriesController
       ring_gauge = cigar[0]['ring_gauge']
       "#{maker} #{name} #{length} #{ring_gauge} rating changed to #{rating}"
     else
-      "#{cigar_entry.errors}"
+      say("#{cigar_entry.errors}")
     end
   end
 
   def update_rating
-    cigars            = Cigar.all
-    cigars_controller = CigarsController.new
+    cigars            = CigarEntry.all
+    cigars_controller = CigarEntriesController.new
     say("Which cigar would you like to edit?")
     say(cigars_controller.index)
     cigar_index = ask('').to_i
@@ -45,12 +45,12 @@ class CigarEntriesController
     end
     rating = ask("What is the current rating?")
     while rating.to_i < 1 or rating.empty? or rating.nil?
-      puts "#{rating} is unacceptable!"
+      say("#{rating} is unacceptable!")
       rating = ask("What is the current rating?")
     end
     cigar_index = cigar_index.to_i - 1
     cigar_id = cigars[cigar_index].id
-    reponse = self.add(cigar_id, rating.to_i)
-    say(reponse) unless response.nil?
+    response = self.add(cigar_id, rating.to_i)
+    say(response) unless response.nil?
   end
 end

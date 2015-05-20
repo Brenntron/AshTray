@@ -10,7 +10,7 @@ class Database
       ring_gauge integer NOT NULL,
       length varchar(255) NOT NULL,
       maker varchar(255) NOT NULL,
-      rating_id integer NOT NULL,
+      rating_id integer,
       FOREIGN KEY(rating_id) REFERENCES cigar_entries(id)
     );
     SQL
@@ -18,7 +18,7 @@ class Database
     CREATE TABLE IF NOT EXISTS cigar_entries (
       id integer PRIMARY KEY AUTOINCREMENT,
       rating integer NOT NULL,
-      cigar_id integer NOT NULL,
+      cigar_id integer,
       FOREIGN KEY(cigar_id) REFERENCES cigars(id)
     );
     SQL

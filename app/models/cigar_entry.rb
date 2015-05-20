@@ -2,8 +2,8 @@ class CigarEntry
   attr_reader :id, :errors, :cigar_id
   attr_accessor :rating
 
-  def self.all(cigar)
-    Database.execute("SELECT * from cigar_entries WHERE cigar_id == ? ORDER BY name", cigar).map do |row|
+  def self.all
+    Database.execute("SELECT * from cigar_entries").map do |row|
       cigar_entry = CigarEntry.new
       cigar_entry.rating = row['rating']
       cigar_entry.instance_variable_set(:@id, row['id'])
