@@ -25,16 +25,16 @@ class CigarEntriesController
       name       = cigar[0]['name']
       length     = cigar[0]['length']
       ring_gauge = cigar[0]['ring_gauge']
-      "#{maker} #{name} #{length} #{ring_gauge} rating changed to #{rating}"
+      "\n\n#{maker} #{name} #{length} #{ring_gauge} rating changed to #{rating}"
     else
       say("#{cigar_entry.errors}")
     end
   end
 
-  def update_rating
-    cigars            = CigarEntry.all
-    cigars_controller = CigarEntriesController.new
-    say("Which cigar would you like to edit?")
+  def add_rating
+    cigars            = Cigar.all
+    cigars_controller = CigarsController.new
+    say("Which cigar would you like to rate?")
     say(cigars_controller.index)
     cigar_index = ask('').to_i
     while cigar_index.to_i < 1 or cigar_index > cigars.length
@@ -43,9 +43,9 @@ class CigarEntriesController
       say("cigars_controller.index")
       cigar_index = ask('').to_i
     end
-    rating = ask("What is the current rating?")
+    rating = ask("What is the rating?")
     while rating.to_i < 1 or rating.empty? or rating.nil?
-      say("#{rating} is unacceptable!")
+      say("#{rating} is most unacceptable!")
       rating = ask("What is the current rating?")
     end
     cigar_index = cigar_index.to_i - 1

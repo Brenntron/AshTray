@@ -17,8 +17,8 @@ class CigarEntry
   end
 
   def valid?
-    unless @mileage.class == Fixnum and @rating > 0
-      @errors = "\"#{rating}\" is unacceptable!"
+    unless @rating.class == Fixnum and @rating > 0
+      @errors = "\"#{rating}\" is the worst unacceptable!"
       false
     else
       @errors = nil
@@ -28,7 +28,7 @@ class CigarEntry
 
   def save
     return false unless valid?
-    Datbase.execute("INSERT INTO cigar_entries (rating, cigar_id) VALUES (?, ?)", mileage, cigar_id)
+    Database.execute("INSERT INTO cigar_entries (rating, cigar_id) VALUES (?, ?)", rating, cigar_id)
     @id = Database.execute("SELECT last_insert_rowid()")[0]['last_insert_rowid()']
     Database.execute("UPDATE cigars set rating_id = ? WHERE id = ?", id, cigar_id)
   end
