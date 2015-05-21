@@ -26,11 +26,13 @@ class CigarsController
 
   def add(maker, name, length, ring_gauge)
     cigar            = Cigar.new
-    cigar.maker      = maker
-    cigar.name       = name
+    cigar.maker      = maker.rstrip
+    cigar.name       = name.rstrip
     cigar.length     = length
     cigar.ring_gauge = ring_gauge
-    if cigar.save
+    if cigar.maker.empty? or cigar.maker.nil? or cigar.name.empty? or cigar.name.nil?
+      raise ArgumentError
+    elsif cigar.save
       "#{maker} #{name} #{length} #{ring_gauge} has been added\n"
     else
       "#{cigar.errors}"
@@ -61,5 +63,19 @@ class CigarsController
     end
     response = self.add(maker, name, length, ring_gauge)
     say(response) unless response.nil?
+  end
+
+  def delete_cigar
+    cigars            = Cigar.count
+    cigars_controller = CigarsController.new
+    say("Which cigar do you want to delete?")
+    user_input = ask(cigars_controller.return_info)
+    while user_input.to_i > cigars or user_input.empty? or user_input.nil?
+      say("That's not right..")
+      user_input = ask(cigar_controller.new.return_info)
+    end
+    Database.execute("DELETE FROM cigars WHERE cigars.id == '#{user_input}'")
+    Database.execute("DELETE FROM cigar_entries WHERE cigar_entries.cigar_id == '#{user_input}'")
+    say("Cigar deleted!")
   end
 end
